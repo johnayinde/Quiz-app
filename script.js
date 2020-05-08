@@ -1,14 +1,11 @@
 const questionNumber = document.querySelector(".question-numberSpan");
-const total = document.querySelector(".total");
-const question = document.querySelector(".questions");
 const trackerContainer = document.querySelector(".answers-tracker");
-const options = document.querySelector(".options").children;
-
 const correctAnswerSpan = document.querySelector(".correct-answer");
+const options = document.querySelector(".options").children;
 const total2 = document.querySelector(".total-question2");
+const question = document.querySelector(".questions");
 const percent = document.querySelector(".percent");
-
-
+const total = document.querySelector(".total");
 const op1 = document.querySelector(".option1");
 const op2 = document.querySelector(".option2");
 const op3 = document.querySelector(".option3");
@@ -18,10 +15,7 @@ let index = 0;
 let score = 0;
 let myArray = [];
 let myArr = [];
-// "answers-tracker
-// console.log( question)
 
-// Questions , options , answers
 
 const questions = [
 	{
@@ -83,7 +77,7 @@ function disableOptions() {
 		we need to enable it back for next()
 		*/
 		if (options[i].id == questions[questionIndex].answer) {
-			options[i].classList.add('correct'); //select correct answer while disabled
+			options[i].classList.add('correct');
 		}
 	}
 }
@@ -94,7 +88,7 @@ function enableOptions() {
 }
 function validate() {
 	if (!options[0].classList.contains('disabled')) {
-		alert('pls select one option');
+		alert('Please Select an Option');
 	} else {
 		enableOptions()
 		randomQuestion();
