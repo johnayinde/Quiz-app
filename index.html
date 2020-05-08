@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div class="quiz-container">
+		<div class="question-number">
+			<h3>Question <span class="question-numberSpan"></span> of <span class="total"></span></h3>
+		</div>
+		<div class="questions">
+
+		</div>
+		<div class="options">
+			<div class="option1 " id="0" onclick="check(this)"></div>
+			<div class="option2 " id="1" onclick="check(this)"></div>
+			<div class="option3" id="2" onclick="check(this)"></div>
+			<div class="option4" id="3" onclick="check(this)"></div>
+		</div>
+		
+		<div class="button">
+			<button type="button" class="btn" onclick="next()">Next</button>
+		</div>
+		<div class="answers-tracker">
+
+		</div>
+	</div>
+	<div class="quiz-over">
+		<div class="box">
+			<h1>Good try! <br> You Got <span class="correct-answer"></span> out of <span class="total-question2"></span>
+				answers correct! <br> That's <span class="percent"></span></h1>
+			<button type="button" onclick="tryAgain()">Try Again</button>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
