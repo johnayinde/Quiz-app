@@ -16,100 +16,111 @@ let score = 0;
 let myArray = [];
 let myArr = [];
 
-
 const questions = [
 	{
 		q: 'how do you call a function name "myFunction?',
-		options: ['myFunction()', 'call myFunction()', 'call function myFunction()', 'all the above'],
-		answer: 0
+		options: [
+			"myFunction()",
+			"call myFunction()",
+			"call function myFunction()",
+			"all the above",
+		],
+		answer: 0,
 	},
 	{
-		q: 'how do you write if statement in javascript',
-		options: ['if i == 5 then', 'if (i == 5)', 'if i = 5', 'if i = 5 then '],
-		answer: 1
+		q: "how do you write if statement in javascript",
+		options: ["if i == 5 then", "if (i == 5)", "if i = 5", "if i = 5 then "],
+		answer: 1,
 	},
 	{
-		q: 'how does a for loop start',
-		options: ['for (i = 0; i<= 5)', 'for (i <= 5; i++)', 'for i = 1 to 5', 'for (i = 0; i<= 5 i++)'],
-		answer: 3
+		q: "how does a for loop start",
+		options: [
+			"for (i = 0; i<= 5)",
+			"for (i <= 5; i++)",
+			"for i = 1 to 5",
+			"for (i = 0; i<= 5 i++)",
+		],
+		answer: 3,
 	},
 	{
-		q: 'how do declear javascript variable',
-		options: ['variable carName', 'var carNAme', 'var 1carNAme', 'van carNAme'],
-		answer: 1
+		q: "how do declear javascript variable",
+		options: ["variable carName", "var carNAme", "var 1carNAme", "van carNAme"],
+		answer: 1,
 	},
 	{
-		q: 'which operator is used to assigna value to a variable',
-		options: ['-', '=', '+', ':'],
-		answer: 1
+		q: "which operator is used to assigna value to a variable",
+		options: ["-", "=", "+", ":"],
+		answer: 1,
 	},
 ];
 
 // set questions, options, and question number
 total.innerHTML = questions.length;
 function load() {
-
 	questionNumber.innerHTML = index + 1;
 	question.innerHTML = questions[questionIndex].q;
 	op1.innerHTML = questions[questionIndex].options[0];
 	op2.innerHTML = questions[questionIndex].options[1];
 	op3.innerHTML = questions[questionIndex].options[2];
 	op4.innerHTML = questions[questionIndex].options[3];
-	index++
+	index++;
 }
+
 function check(element) {
 	if (element.id == questions[questionIndex].answer) {
-		element.classList.add('correct');
-		updateAnswerTracker('correct');
+		element.classList.add("correct");
+		updateAnswerTracker("correct");
 		score++;
 	} else {
-		element.classList.add('wrong');
-		updateAnswerTracker('wrong');
-
+		element.classList.add("wrong");
+		updateAnswerTracker("wrong");
 	}
 	disableOptions();
 }
+
 function disableOptions() {
 	for (let i = 0; i < options.length; i++) {
-		options[i].classList.add('disabled');
+		options[i].classList.add("disabled");
 		/*
 		cannot reselect options after picking the wrong answer
 		we need to enable it back for next()
 		*/
 		if (options[i].id == questions[questionIndex].answer) {
-			options[i].classList.add('correct');
+			options[i].classList.add("correct");
 		}
 	}
 }
+
 function enableOptions() {
 	for (let i = 0; i < options.length; i++) {
-		options[i].classList.remove('disabled', "correct", "wrong");
+		options[i].classList.remove("disabled", "correct", "wrong");
 	}
 }
+
 function validate() {
-	if (!options[0].classList.contains('disabled')) {
-		alert('Please Select an Option');
+	if (!options[0].classList.contains("disabled")) {
+		alert("Please Select an Option");
 	} else {
-		enableOptions()
+		enableOptions();
 		randomQuestion();
 	}
 }
 function next() {
 	/**
-	 * b4 going to next 
-	 * check if user select ans question or not 
+	 * b4 going to next
+	 * check if user select ans question or not
 	 * alert if not select else Next()
 	 */
-	validate()
+	validate();
 }
+
 function randomQuestion() {
 	let randomNumber = Math.floor(Math.random() * questions.length);
 	let hitDuplicate = 0;
 	// removing duplicates
 	if (index == questions.length) {
 		quizOver();
-	}
-	else {
+	} else {
 		if (myArray.length > 0) {
 			for (let i = 0; i < myArray.length; i++) {
 				if (myArray[i] == randomNumber) {
@@ -123,7 +134,6 @@ function randomQuestion() {
 				questionIndex = randomNumber;
 				load();
 				myArr.push(questionIndex);
-
 			}
 		}
 		if (myArray.length == 0) {
@@ -131,32 +141,34 @@ function randomQuestion() {
 			load();
 			myArr.push(questionIndex);
 		}
-		console.log("myArr:" + myArr)
+		console.log("myArr:" + myArr);
 		myArray.push(questionIndex);
-
 	}
 }
+
 function answerTracker() {
 	for (let i = 0; i < questions.length; i++) {
-		const div = document.createElement('div');
+		const div = document.createElement("div");
 		trackerContainer.appendChild(div);
 	}
 }
+
 function updateAnswerTracker(className) {
 	trackerContainer.children[index - 1].classList.add(className);
 }
 
 function quizOver() {
-	document.querySelector(".quiz-over").classList.add('show');
+	document.querySelector(".quiz-over").classList.add("show");
 	correctAnswerSpan.innerHTML = score;
 	total2.innerHTML = questions.length;
-	percent.innerHTML = (score/questions.length)*100 + "%";
+	percent.innerHTML = (score / questions.length) * 100 + "%";
 }
+
 function tryAgain() {
 	window.location.reload();
 }
-window.onload = function () {
-	randomQuestion()
-	answerTracker()
 
-}
+window.onload = function () {
+	randomQuestion();
+	answerTracker();
+};
