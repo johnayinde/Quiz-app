@@ -1,4 +1,4 @@
-## Intership Task: Build a Responsive Quiz Game
+## Internship Task: Build a Responsive Quiz Game
  Demo https://johnayinde.github.io/Quiz-app/
 
 Build a responsive quiz game. Your quiz game should function according to these specifications: 
